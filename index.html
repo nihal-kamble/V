@@ -5,31 +5,26 @@
   <meta charset="UTF-8">
   <title>Izzabella ❤️</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
   <style>
     body {
       margin: 0;
-      font-family: 'Arial', sans-serif;
+      font-family: Arial, sans-serif;
       background: linear-gradient(180deg, #ffd6e0, #fff);
       text-align: center;
       color: #b30059;
       overflow-x: hidden;
     }
 
-    h1 {
-      margin-top: 40px;
-    }
-
-    p {
-      font-size: 18px;
-      padding: 0 20px;
-    }
+    h1 { margin-top: 40px; }
+    p { font-size: 18px; padding: 0 20px; }
 
     .gallery img {
       width: 85%;
       max-width: 320px;
       border-radius: 20px;
       margin: 15px 0;
-      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+      box-shadow: 0 8px 20px rgba(0,0,0,0.15);
     }
 
     button {
@@ -49,6 +44,7 @@
     .no {
       background-color: #ffe6ec;
       color: #b30059;
+      position: relative;
     }
 
     footer {
@@ -57,7 +53,7 @@
       color: #888;
     }
 
-    /* FLOATING HEARTS */
+    /* Floating hearts */
     .heart {
       position: fixed;
       bottom: -20px;
@@ -67,49 +63,17 @@
     }
 
     @keyframes floatUp {
-      from {
-        transform: translateY(0);
-        opacity: 1;
-      }
-
-      to {
-        transform: translateY(-100vh);
-        opacity: 0;
-      }
+      from { transform: translateY(0); opacity: 1; }
+      to { transform: translateY(-100vh); opacity: 0; }
     }
   </style>
-
 </head>
 
-<script>
-  // Floating hearts
-  setInterval(() => {
-    const heart = document.createElement('div');
-    heart.className = 'heart';
-    heart.innerText = '💖';
-    heart.style.left = Math.random() * 100 + 'vw';
-    heart.style.animationDuration = (4 + Math.random() * 3) + 's';
-    document.body.appendChild(heart);
-    setTimeout(() => heart.remove(), 6000);
-  }, 500);
-
-  // Confetti + message
-  function celebrate() {
-    for (let i = 0; i < 80; i++) {
-      const confetti = document.createElement('div');
-      confetti.innerText = '✨';
-      confetti.style.position = 'fixed';
-      confetti.style.left = Math.random() * 100 + 'vw';
-      confetti.style.top = Math.random() * 100 + 'vh';
-      confetti.style.fontSize = '20px';
-      document.body.appendChild(confetti);
-      setTimeout(() => confetti.remove(), 1500);
-    }
-    alert('YAY!!! 💖 You just made me the happiest person 🥰');
-  }
-</script>
-
 <body>
+
+  <audio autoplay loop>
+    <source src="https://cdn.pixabay.com/download/audio/2022/03/15/audio_7c24f1c6b4.mp3" type="audio/mpeg">
+  </audio>
 
   <h1>Izzabella ❤️</h1>
 
@@ -128,36 +92,55 @@
 
   <h2>Will you be my Valentine? 💕</h2>
 
-  <button class="yes" onclick="celebrate()">
-    YES 💖
-  </button>
-
-
-  <button class="no" id="noBtn">
-    NO 🙈
-  </button>
-  const noBtn = document.getElementById('noBtn');
-
-  noBtn.addEventListener('mouseover', moveButton);
-  noBtn.addEventListener('touchstart', moveButton);
-
-  function moveButton() {
-  const x = Math.random() * (window.innerWidth - noBtn.offsetWidth);
-  const y = Math.random() * (window.innerHeight - noBtn.offsetHeight);
-
-  noBtn.style.position = 'fixed';
-  noBtn.style.left = `${x}px`;
-  noBtn.style.top = `${y}px`;
-  }
-
+  <button class="yes" onclick="celebrate()">YES 💖</button>
+  <button class="no" id="noBtn">NO 🙈</button>
 
   <footer>
     Made with ❤️ just for you
   </footer>
 
-</body>
-<audio autoplay loop>
-  <source src="https://cdn.pixabay.com/download/audio/2022/03/15/audio_7c24f1c6b4.mp3" type="audio/mpeg">
-</audio>
+  <!-- ALL JAVASCRIPT GOES HERE -->
+  <script>
+    // Floating hearts
+    setInterval(() => {
+      const heart = document.createElement('div');
+      heart.className = 'heart';
+      heart.innerText = '💖';
+      heart.style.left = Math.random() * 100 + 'vw';
+      heart.style.animationDuration = (4 + Math.random() * 3) + 's';
+      document.body.appendChild(heart);
+      setTimeout(() => heart.remove(), 6000);
+    }, 500);
 
+    // Confetti + YES action
+    function celebrate() {
+      for (let i = 0; i < 80; i++) {
+        const confetti = document.createElement('div');
+        confetti.innerText = '✨';
+        confetti.style.position = 'fixed';
+        confetti.style.left = Math.random() * 100 + 'vw';
+        confetti.style.top = Math.random() * 100 + 'vh';
+        confetti.style.fontSize = '20px';
+        document.body.appendChild(confetti);
+        setTimeout(() => confetti.remove(), 1500);
+      }
+      alert('YAY!!! 💖 You just made me the happiest person 🥰');
+    }
+
+    // NO button runs away 😈
+    const noBtn = document.getElementById('noBtn');
+
+    noBtn.addEventListener('mouseover', moveButton);
+    noBtn.addEventListener('touchstart', moveButton);
+
+    function moveButton() {
+      const x = Math.random() * (window.innerWidth - noBtn.offsetWidth);
+      const y = Math.random() * (window.innerHeight - noBtn.offsetHeight);
+      noBtn.style.position = 'fixed';
+      noBtn.style.left = x + 'px';
+      noBtn.style.top = y + 'px';
+    }
+  </script>
+
+</body>
 </html>
